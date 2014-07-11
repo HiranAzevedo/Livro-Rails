@@ -1,15 +1,8 @@
 <% if @user.errors.any? %>
-<div id='error_explanation'>
-  <h2> Não foi possivel salvar o seu perfil, devido aos seguintes erros</h2>
-  <ul>
-    <% @user.errors.each do |message| %>
-    <ul><%= message %></ul>
-        <% end %>
-  </ul>
-</div>
-    <% end %>
-
-
+    <div id="error_explanation">
+      <%= t 'general.form_error' %>
+    </div>
+<% end %>
 
 <%= form_for @user do |f| %>
     <p>
