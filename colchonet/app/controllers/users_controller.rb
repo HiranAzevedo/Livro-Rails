@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     @user= User.new (user_params)
     if @user.save
+      Signup.confirm_email(@user).deliver
       redirect_to @user, notice: 'Cadastro criado com successo'
       return
     end
