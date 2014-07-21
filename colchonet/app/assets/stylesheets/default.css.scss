@@ -6,6 +6,7 @@ $sans-serif-families: "Helvetica", sans-serif;
 
 $error-text-color: #b84947;
 $success-text-color: #468847;
+@import "shadow";
 
 *{
   font-family: $sans-serif-families ;

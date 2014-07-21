@@ -1,4 +1,6 @@
 class UserSessionsController < ApplicationController
+  before_action :require_authentication, only: [:new,:create]
+  before_action :require_no_authentication, only: [:destroy]
   def new
     @user_session = UserSession.new(session)
   end
@@ -13,13 +15,9 @@ class UserSessionsController < ApplicationController
 
   end
   def destroy
-# Ainda não :-)
-  end
-
-  def current_user
-    User.find(@session[:user_id])
-  end
-  def user_signed_in?
-    @session[:user_id].present?
+    def destroy
+      user_session.destroy
+      redirect_to root_path, notice: t('flash.notice.signed_out')
+    end
   end
 end
