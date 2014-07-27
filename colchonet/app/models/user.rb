@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
   validates_length_of :bio, minimum: 30, allow_blank: false
   validates_format_of :email, with: EMAIL_REGEXP
 
-  has_many :rooms
-  
+  has_many :rooms, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+
   has_secure_password
   scope :confirmed, -> { where.not(confirmed_at: nil) }
 
